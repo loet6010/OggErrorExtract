@@ -73,7 +73,6 @@ public class GgserrReader {
 					break;
 					
 				case warning_type:{
-					System.out.println("warning_type");
 				}
 					break;
 
