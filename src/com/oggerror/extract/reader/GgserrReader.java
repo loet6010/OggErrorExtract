@@ -1,10 +1,8 @@
 package com.oggerror.extract.reader;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,11 +30,13 @@ public class GgserrReader {
 	private MatchType matchType;
 	// 读写相关Buffered变量
 	private static BufferedReader bReader;
-	private static BufferedWriter bWriterError;
-	private static BufferedWriter bWriterWarning;
 	// 类声明
-	ErrorLogDispose errorLogDispose = new ErrorLogDispose();
+	private ErrorLogDispose errorLogDispose = new ErrorLogDispose();
 
+	/**
+	 * 主函数-程序入口
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		GgserrReader ggserrReader = new GgserrReader();
@@ -48,19 +48,13 @@ public class GgserrReader {
 	}
 
 	/**
-	 * 读写“ggserr.log”文件
+	 * 读“ggserr.log”文件
 	 * @throws IOException
 	 */
 	public void readGgserrLog() throws IOException {
 		try {
 			FileReader fileReader = new FileReader("D:\\splitFileTest\\ggserr.log");
 			bReader = new BufferedReader(fileReader);
-
-			FileWriter fileWriterError = new FileWriter("D:\\splitFileTest\\extractError.log");
-			bWriterError = new BufferedWriter(fileWriterError);
-			
-			FileWriter fileWriterWarning = new FileWriter("D:\\splitFileTest\\extractWarning.log");
-			bWriterWarning = new BufferedWriter(fileWriterWarning);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -74,15 +68,12 @@ public class GgserrReader {
 				// 对读取行进行判断
 				switch (matchType) {
 				case error_type:{
-					bWriterError.write(readLineTemp);
-					bWriterError.newLine();
 					errorLogDispose.errorNumberAcpuire(readLineTemp);;
 				}
 					break;
 					
 				case warning_type:{
-					bWriterWarning.write(readLineTemp);
-					bWriterWarning.newLine();
+					System.out.println("warning_type");
 				}
 					break;
 
@@ -94,17 +85,10 @@ public class GgserrReader {
 				readLineTemp = bReader.readLine();
 				i++;
 			}
-
-			bWriterError.flush();
-			bWriterWarning.flush();
-
 			System.out.println("log行数：" + i);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			bWriterError.close();
-			bWriterWarning.close();
 			bReader.close();
 		}
 	}
