@@ -1,0 +1,2 @@
+# OggErrorExtract
+读取ggserr.log并分离出ERROR和WARNING信息
