@@ -32,12 +32,15 @@ public class GgserrDispose {
 	private static BufferedReader bReader;
 	// 类声明
 	private ErrorLogDispose errorLogDispose = new ErrorLogDispose();
+	// 正则匹配
+	private Pattern pattern;
+	private Matcher matcher;
 
 	/**
 	 * 读“ggserr.log”文件
 	 * @throws IOException
 	 */
-	public void readGgserrLog(String filePath) throws IOException {
+	public void readGgserrLog(String filePath) {
 		try {
 			FileReader fileReader = new FileReader(filePath);
 			bReader = new BufferedReader(fileReader);
@@ -47,7 +50,6 @@ public class GgserrDispose {
 
 		try {
 			String readLineTemp = bReader.readLine();
-			int i = 1;
 			while (readLineTemp != null) {
 				matchType = getMatchType(readLineTemp);
 				
@@ -59,22 +61,24 @@ public class GgserrDispose {
 					break;
 					
 				case warning_type:{
+					System.out.println("warning_type");
 				}
 					break;
 
 				default:
 					break;
-				}
-				
+				}				
 				// 读取下一行
 				readLineTemp = bReader.readLine();
-				i++;
 			}
-			System.out.println("log行数：" + i);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			bReader.close();
+			try {
+				bReader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -85,19 +89,19 @@ public class GgserrDispose {
 	 */
 	private MatchType getMatchType(String tempLine) {
 		// 创建 Pattern 对象(匹配ERROR信息）
-		Pattern patternError = Pattern.compile(MATCH_ERROR);
+		pattern = Pattern.compile(MATCH_ERROR);
 		// 现在创建 matcher 对象
-		Matcher matcherError = patternError.matcher(tempLine);
+		matcher = pattern.matcher(tempLine);
 
-		if (matcherError.find())
+		if (matcher.find())
 			return MatchType.error_type;
 
 		// 创建 Pattern 对象(匹配WARNING信息）
-		Pattern patternWarning = Pattern.compile(MATCH_WARNING);
+		pattern = Pattern.compile(MATCH_WARNING);
 		// 现在创建 matcher 对象
-		Matcher matcherWarning = patternWarning.matcher(tempLine);
+		matcher = pattern.matcher(tempLine);
 
-		if (matcherWarning.find())
+		if (matcher.find())
 			return MatchType.warning_type;
 
 		return MatchType.other_type;

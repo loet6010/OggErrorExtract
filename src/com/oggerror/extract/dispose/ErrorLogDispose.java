@@ -11,7 +11,9 @@ import java.util.regex.Pattern;
  *
  */
 public class ErrorLogDispose {
-	
+	// 正则匹配
+	private Pattern pattern;
+	private Matcher matcher;	
 	// 匹配字符串
 	private final static String MATCH_ERROR_NO = "(OGG-)[\\d]{5}";
 	
@@ -20,8 +22,8 @@ public class ErrorLogDispose {
 	 * @param readLineTemp
 	 */
 	public void errorNumberAcpuire(String readLineTemp) {
-		Pattern pattern = Pattern.compile(MATCH_ERROR_NO);
-		Matcher matcher = pattern.matcher(readLineTemp);
+		pattern = Pattern.compile(MATCH_ERROR_NO);
+		matcher = pattern.matcher(readLineTemp);
 		
 		if (matcher.find()) {
 			for (int i = 0; i < matcher.group().length(); i++) {

@@ -1,7 +1,5 @@
 package com.oggerror.extract.test;
 
-import java.io.IOException;
-
 import com.oggerror.extract.reader.GgserrDispose;
 /**
  * 
@@ -13,13 +11,11 @@ import com.oggerror.extract.reader.GgserrDispose;
 public class TestMain {
 	
 	public static void main(String[] args) {
+		
+		String filePath = "D:\\splitFileTest\\ggserr.log";
 		// 调用处理方法
 		GgserrDispose ggserrReader = new GgserrDispose();
-		try {
-			ggserrReader.readGgserrLog("D:\\splitFileTest\\ggserr.log");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ggserrReader.readGgserrLog(filePath);
 
 	}
 
