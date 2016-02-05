@@ -34,26 +34,12 @@ public class GgserrDispose {
 	private ErrorLogDispose errorLogDispose = new ErrorLogDispose();
 
 	/**
-	 * 主函数-程序入口
-	 * @param args
-	 */
-	public static void main(String[] args) {
-
-		GgserrDispose ggserrReader = new GgserrDispose();
-		try {
-			ggserrReader.readGgserrLog();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * 读“ggserr.log”文件
 	 * @throws IOException
 	 */
-	public void readGgserrLog() throws IOException {
+	public void readGgserrLog(String filePath) throws IOException {
 		try {
-			FileReader fileReader = new FileReader("D:\\splitFileTest\\ggserr.log");
+			FileReader fileReader = new FileReader(filePath);
 			bReader = new BufferedReader(fileReader);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
