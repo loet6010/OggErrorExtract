@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 
 import com.oggerror.extract.dispose.ErrorLogDispose;
-public class GgserrReader {
+public class GgserrDispose {
 
 	// ERROR匹配串
 	private final static String MATCH_ERROR = "[\\d][ ]+(ERROR)[ ]+";
@@ -39,7 +39,7 @@ public class GgserrReader {
 	 */
 	public static void main(String[] args) {
 
-		GgserrReader ggserrReader = new GgserrReader();
+		GgserrDispose ggserrReader = new GgserrDispose();
 		try {
 			ggserrReader.readGgserrLog();
 		} catch (IOException e) {
