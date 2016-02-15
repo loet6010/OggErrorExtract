@@ -1,12 +1,12 @@
 package com.oggerror.test;
 
-import com.oggerror.connssh.param.ParamManagerSsh;
+import com.oggerror.connssh.param.GetAvailableDiskSpace;
 
 public class ConnTest {
 
 	public static void main(String[] args) {
-		ParamManagerSsh pSsh = new ParamManagerSsh();
-		long sizeLong = pSsh.getDiskSize();
+		GetAvailableDiskSpace getAvailableDiskSpace = new GetAvailableDiskSpace();
+		long sizeLong = getAvailableDiskSpace.getDiskSize();
 		System.out.println(sizeLong);
 	}
 

@@ -12,7 +12,7 @@ import com.oggerror.connssh.conn.ConnectionManagerSsh;
  * @intro  设定SSH连接参数，并提供返回磁盘空间的方法
  *
  */
-public class ParamManagerSsh {
+public class GetAvailableDiskSpace {
 	/**
 	 * SSH连接参数定义
 	 */
@@ -27,7 +27,7 @@ public class ParamManagerSsh {
 	private String readLine = null;
 	private String readTemp = null;
 	
-	public ParamManagerSsh() {
+	public GetAvailableDiskSpace() {
 		cSsh = ConnectionManagerSsh.getInstance();
 	}
 	
