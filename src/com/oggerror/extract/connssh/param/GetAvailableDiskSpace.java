@@ -20,7 +20,8 @@ public class GetAvailableDiskSpace {
 	private static final String PORT = "22";// 端口号
 	private static final String USER = "oracle";// 用户名
 	private static final String PASSWORD = "redhat";// 密码
-	private static final String COMMAND_LINE = "df /home";// 命令行
+	private static final String COMMAND_LINE_FIRST = "df ";// 命令行
+	private String command_line = null;
 	
 	ConnectionManagerSsh cSsh;
 	
@@ -33,12 +34,13 @@ public class GetAvailableDiskSpace {
 	
 	/**
 	 * 获取可用磁盘空间
+	 * @param tbsFilePath
 	 * @return long
 	 */
-	public long getDiskSize() {
+	public long getDiskSize(String tbsFilePath) {
 		String matchLine = null;
+		command_line = COMMAND_LINE_FIRST + tbsFilePath;
 		if (getedCommandLineResult()) {
-			System.out.println(readTemp);
 			Pattern pattern = Pattern.compile("[ ][\\d]+[ ]");
 			Matcher matcher = pattern.matcher(readTemp);
 			
@@ -52,7 +54,7 @@ public class GetAvailableDiskSpace {
 	
 	private boolean getedCommandLineResult() {
 		try {
-			BufferedReader bufferedReader = cSsh.execCommand(IP_ADDRESS, PORT, USER, null, PASSWORD, COMMAND_LINE);
+			BufferedReader bufferedReader = cSsh.execCommand(IP_ADDRESS, PORT, USER, null, PASSWORD, command_line);
 			
 			readLine = bufferedReader.readLine();
 			while (readLine != null) {

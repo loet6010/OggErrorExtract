@@ -3,6 +3,8 @@ package com.oggerror.extract.dispose;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.oggerror.extract.dispose.addTbsSpace.AddTbsSpaceDispose;
+
 /**
  * 
  * @author liurh
@@ -15,7 +17,7 @@ public class LogAnalyzeDispose {
 	private Pattern pattern;
 	private Matcher matcher;	
 	// 匹配字符串(表空间不足）
-	private final static String ORA_01654 = "(ORA-01654)";
+	private final static String MATCH_ORA_01654 = "(ORA-01654)";
 	
 	/**
 	 * 取得错误号
@@ -23,11 +25,18 @@ public class LogAnalyzeDispose {
 	 */
 	public void errorNumberAcpuire(String readLineTemp) {
 		// 表空间不足匹配
-		pattern = Pattern.compile(ORA_01654);
+		pattern = Pattern.compile(MATCH_ORA_01654);
 		matcher = pattern.matcher(readLineTemp);		
 		if (matcher.find()) {		
-			System.out.println(matcher.group());
-			System.out.println(readLineTemp);
+			AddTbsSpaceDispose atsDispose = new AddTbsSpaceDispose();
+			boolean tbsAddDipose = atsDispose.addTbsSpace(readLineTemp);
+			
+			if (tbsAddDipose) {
+				System.out.println("表空间增加完成，表空间不足处理成功！");
+			} else {
+				System.out.println("表空间增加未果，表空间不足处理失败！");
+			}
+			
 		}
 	}
 

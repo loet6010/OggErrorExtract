@@ -19,7 +19,6 @@ import com.oggerror.extract.sqldispose.util.SqlSessionBuild;
 public class AddTbsSpaceLogic {
 
 	private String tbsFilePath = null;
-	private String oldFilePath = null;
 	private AddTbsSpaceDto addTbsSpaceDto;
 	private StringBuffer sBufferFileNo;
 	
@@ -28,11 +27,7 @@ public class AddTbsSpaceLogic {
 	 * @param tbsName
 	 * @return true
 	 */
-	public boolean addTbsSpace(String tbsName) {
-		// 获取表空间文件路径名
-		TbsFilePathLogic tbsFilePathLogic = new TbsFilePathLogic();
-		oldFilePath = tbsFilePathLogic.getTbsFilePath(tbsName);
-		
+	public boolean addTbsSpace(String tbsName, String oldFilePath) {		
 		// 根据源文件路径名产生新的文件路径名
 		tbsFilePath = getNewFilePath(oldFilePath);
 		
