@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
  * 
  * @author liurh
@@ -56,13 +57,11 @@ public class GgserrLogReader {
 				// 对读取行进行判断
 				switch (matchType) {
 				case error_type:{
-					System.out.print("ERR:");
 					logAnalyzeDispose.errorNumberAcpuire(readLineTemp);;
 				}
 					break;
 					
 				case warning_type:{
-					System.out.print("WAR:");
 					logAnalyzeDispose.errorNumberAcpuire(readLineTemp);;
 				}
 					break;

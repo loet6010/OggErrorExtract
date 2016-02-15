@@ -14,21 +14,21 @@ public class LogAnalyzeDispose {
 	// 正则匹配
 	private Pattern pattern;
 	private Matcher matcher;	
-	// 匹配字符串
-	private final static String MATCH_ERROR_NO = "(OGG-)[\\d]{5}";
+	// 匹配字符串(表空间不足）
+	private final static String ORA_01654 = "(ORA-01654)";
 	
 	/**
 	 * 取得错误号
 	 * @param readLineTemp
 	 */
 	public void errorNumberAcpuire(String readLineTemp) {
-		pattern = Pattern.compile(MATCH_ERROR_NO);
-		matcher = pattern.matcher(readLineTemp);
-		
+		// 表空间不足匹配
+		pattern = Pattern.compile(ORA_01654);
+		matcher = pattern.matcher(readLineTemp);		
 		if (matcher.find()) {		
-			System.out.print(matcher.group());
-			System.out.println();
-		}		
+			System.out.println(matcher.group());
+			System.out.println(readLineTemp);
+		}
 	}
 
 }
