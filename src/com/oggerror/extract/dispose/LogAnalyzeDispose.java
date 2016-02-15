@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @intro  对ggserr.log中ERROR信息进行处理
  *
  */
-public class ErrorLogDispose {
+public class LogAnalyzeDispose {
 	// 正则匹配
 	private Pattern pattern;
 	private Matcher matcher;	
@@ -25,10 +25,8 @@ public class ErrorLogDispose {
 		pattern = Pattern.compile(MATCH_ERROR_NO);
 		matcher = pattern.matcher(readLineTemp);
 		
-		if (matcher.find()) {
-			for (int i = 0; i < matcher.group().length(); i++) {
-				System.out.print((i+1)+":"+matcher.group(0)+" ");
-			}
+		if (matcher.find()) {		
+			System.out.print(matcher.group());
 			System.out.println();
 		}		
 	}

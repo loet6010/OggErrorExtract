@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
  *
  */
 
-import com.oggerror.extract.dispose.ErrorLogDispose;
-public class GgserrDispose {
+import com.oggerror.extract.dispose.LogAnalyzeDispose;
+public class GgserrLogReader {
 
 	// ERROR匹配串
 	private final static String MATCH_ERROR = "[\\d][ ]+(ERROR)[ ]+";
@@ -31,7 +31,7 @@ public class GgserrDispose {
 	// 读写相关Buffered变量
 	private static BufferedReader bReader;
 	// 类声明
-	private ErrorLogDispose errorLogDispose = new ErrorLogDispose();
+	private LogAnalyzeDispose logAnalyzeDispose = new LogAnalyzeDispose();
 	// 正则匹配
 	private Pattern pattern;
 	private Matcher matcher;
@@ -56,12 +56,14 @@ public class GgserrDispose {
 				// 对读取行进行判断
 				switch (matchType) {
 				case error_type:{
-					errorLogDispose.errorNumberAcpuire(readLineTemp);;
+					System.out.print("ERR:");
+					logAnalyzeDispose.errorNumberAcpuire(readLineTemp);;
 				}
 					break;
 					
 				case warning_type:{
-					System.out.println("warning_type");
+					System.out.print("WAR:");
+					logAnalyzeDispose.errorNumberAcpuire(readLineTemp);;
 				}
 					break;
 

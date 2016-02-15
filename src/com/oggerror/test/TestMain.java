@@ -1,6 +1,6 @@
 package com.oggerror.test;
 
-import com.oggerror.extract.reader.GgserrDispose;
+import com.oggerror.extract.reader.GgserrLogReader;
 /**
  * 
  * @author liurh
@@ -14,7 +14,7 @@ public class TestMain {
 		
 		String filePath = "D:\\splitFileTest\\ggserr.log";
 		// 调用处理方法
-		GgserrDispose ggserrReader = new GgserrDispose();
+		GgserrLogReader ggserrReader = new GgserrLogReader();
 		ggserrReader.readGgserrLog(filePath);
 
 	}
