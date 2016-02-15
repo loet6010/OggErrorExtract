@@ -1,13 +1,13 @@
-package com.oggerror.sqldispose.logic;
+package com.oggerror.extract.sqldispose.logic;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.oggerror.sqldispose.dao.AddTbsSpaceDao;
-import com.oggerror.sqldispose.dto.AddTbsSpaceDto;
-import com.oggerror.sqldispose.util.SqlSessionBuild;
+import com.oggerror.extract.sqldispose.dao.AddTbsSpaceDao;
+import com.oggerror.extract.sqldispose.dto.AddTbsSpaceDto;
+import com.oggerror.extract.sqldispose.util.SqlSessionBuild;
 
 /**
  * 

@@ -1,6 +1,6 @@
 package com.oggerror.test;
 
-import com.oggerror.sqldispose.logic.AddTbsSpaceLogic;
+import com.oggerror.extract.sqldispose.logic.AddTbsSpaceLogic;
 
 public class AddTbsSpaceTest {
 

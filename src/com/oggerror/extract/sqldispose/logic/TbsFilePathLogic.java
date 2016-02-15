@@ -1,9 +1,9 @@
-package com.oggerror.sqldispose.logic;
+package com.oggerror.extract.sqldispose.logic;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.oggerror.sqldispose.dao.TbsFilePathDao;
-import com.oggerror.sqldispose.util.SqlSessionBuild;
+import com.oggerror.extract.sqldispose.dao.TbsFilePathDao;
+import com.oggerror.extract.sqldispose.util.SqlSessionBuild;
 
 /**
  * 

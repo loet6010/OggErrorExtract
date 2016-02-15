@@ -1,4 +1,4 @@
-package com.oggerror.sqldispose.dto;
+package com.oggerror.extract.sqldispose.dto;
 /**
  * 
  * @author liurh

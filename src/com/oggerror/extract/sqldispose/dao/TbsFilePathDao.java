@@ -1,4 +1,4 @@
-package com.oggerror.sqldispose.dao;
+package com.oggerror.extract.sqldispose.dao;
 /**
  * 
  * @author liurh

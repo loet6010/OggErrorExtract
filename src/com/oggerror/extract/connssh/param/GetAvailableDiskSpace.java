@@ -1,10 +1,10 @@
-package com.oggerror.connssh.param;
+package com.oggerror.extract.connssh.param;
 
 import java.io.BufferedReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.oggerror.connssh.conn.ConnectionManagerSsh;
+import com.oggerror.extract.connssh.conn.ConnectionManagerSsh;
 /**
  * 
  * @author liurh

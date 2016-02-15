@@ -1,4 +1,4 @@
-package com.oggerror.sqldispose.util;
+package com.oggerror.extract.sqldispose.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +23,7 @@ public class SqlSessionBuild {
 	public SqlSession getSqlSession() {
 
 		// 构建SqlSessionFactory
-		String resource = "com/oggerror/sqldispose/mybatis-config.xml";
+		String resource = "com/oggerror/extract/sqldispose/mybatis-config.xml";
 		InputStream inputStream = null;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);

@@ -1,6 +1,6 @@
-package com.oggerror.sqldispose.dao;
+package com.oggerror.extract.sqldispose.dao;
 
-import com.oggerror.sqldispose.dto.AddTbsSpaceDto;
+import com.oggerror.extract.sqldispose.dto.AddTbsSpaceDto;
 
 /**
  * 

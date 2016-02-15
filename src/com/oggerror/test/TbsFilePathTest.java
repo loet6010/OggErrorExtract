@@ -1,6 +1,6 @@
 package com.oggerror.test;
 
-import com.oggerror.sqldispose.logic.TbsFilePathLogic;
+import com.oggerror.extract.sqldispose.logic.TbsFilePathLogic;
 
 public class TbsFilePathTest {
 

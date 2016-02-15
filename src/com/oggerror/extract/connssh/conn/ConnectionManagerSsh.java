@@ -1,4 +1,4 @@
-package com.oggerror.connssh.conn;
+package com.oggerror.extract.connssh.conn;
 
 import java.io.BufferedReader;
 import java.io.File;

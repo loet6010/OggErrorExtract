@@ -1,6 +1,6 @@
 package com.oggerror.test;
 
-import com.oggerror.connssh.param.GetAvailableDiskSpace;
+import com.oggerror.extract.connssh.param.GetAvailableDiskSpace;
 
 public class ConnTest {
 
