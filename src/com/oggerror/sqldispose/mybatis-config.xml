@@ -17,5 +17,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/oggerror/sqldispose/dao/TbsFilePathDao.xml" />
+		<mapper resource="com/oggerror/sqldispose/dao/AddTbsSpaceDao.xml" />
 	</mappers>
 </configuration>

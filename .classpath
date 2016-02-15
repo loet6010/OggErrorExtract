@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="lib/ganymed-ssh2-build210.jar"/>
-	<classpathentry kind="lib" path="lib/mybatis-3.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/mybatis-3.3.0.jar" sourcepath="D:/JAVA/jar包源码/mybatis-3.3.0-src.zip"/>
 	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.25-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
