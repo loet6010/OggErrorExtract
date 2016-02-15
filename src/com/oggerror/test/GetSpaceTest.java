@@ -1,4 +1,4 @@
-package com.oggerror.extract.test;
+package com.oggerror.test;
 
 import java.io.File;
 /**
