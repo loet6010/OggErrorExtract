@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.oggerror.extract.connssh.param.GetAvailableDiskSpace;
 import com.oggerror.extract.sqldispose.dao.AddTbsSpaceDao;
 import com.oggerror.extract.sqldispose.dto.TbsSpaceDto;
 import com.oggerror.extract.sqldispose.util.SqlSessionBuild;
@@ -25,33 +26,47 @@ public class AddTbsSpaceLogic {
 	 * @param tbsName
 	 * @return true
 	 */
-	public boolean addTbsSpace(String tbsName, String oldFilePath) {		
-		// 根据源文件路径名产生新的文件路径名
-		String tbsFilePath = getNewFilePath(oldFilePath);
+	public boolean addTbsSpace(String tbsName) {
+		// 获取表空间文件名
+		TbsFilePathLogic tbsFilePathLogic = new TbsFilePathLogic();
+		String oldFilePath = tbsFilePathLogic.getTbsFilePath(tbsName);
 		
-		// 对AddTbsSpaceDto进行赋值
-		TbsSpaceDto addTbsSpaceDto = new TbsSpaceDto();
-		addTbsSpaceDto.setTbsName(tbsName);
-		addTbsSpaceDto.setTbsFilePath(tbsFilePath);
-		
-		System.out.println(oldFilePath);
-		System.out.println(tbsFilePath);
-		
-		// 获取SqlSession
-		SqlSession sqlSession = new SqlSessionBuild().getSqlSession();
-		try {
-			// 映射AddTbsSpaceDao，对表空间容量进行扩充
-			AddTbsSpaceDao addTbsSpaceDao = sqlSession.getMapper(AddTbsSpaceDao.class);
-			addTbsSpaceDao.addTbsSpace(addTbsSpaceDto);		
-		} catch(Exception e) {
-			e.printStackTrace();
+		if (oldFilePath != null) {
+			if (GetAvailableDiskSpace.isAvailable(oldFilePath)) {
+				// 根据源文件路径名产生新的文件路径名
+				String tbsFilePath = getNewFilePath(oldFilePath);
+				
+				// 对AddTbsSpaceDto进行赋值
+				TbsSpaceDto addTbsSpaceDto = new TbsSpaceDto();
+				addTbsSpaceDto.setTbsName(tbsName);
+				addTbsSpaceDto.setTbsFilePath(tbsFilePath);
+				
+				System.out.println(oldFilePath);
+				System.out.println(tbsFilePath);
+				
+				// 获取SqlSession
+				SqlSession sqlSession = new SqlSessionBuild().getSqlSession();
+				try {
+					// 映射AddTbsSpaceDao，对表空间容量进行扩充
+					AddTbsSpaceDao addTbsSpaceDao = sqlSession.getMapper(AddTbsSpaceDao.class);
+					addTbsSpaceDao.addTbsSpace(addTbsSpaceDto);		
+				} catch(Exception e) {
+					e.printStackTrace();
+					return false;
+				} finally {
+					// 关闭SqlSession
+					sqlSession.close();		 
+				}
+				System.out.println("增加表空间成功！");
+				return true;
+			} else {
+				System.out.println("磁盘剩余空间不足！");
+				return false;
+			}				
+		} else {
+			System.out.println("表空间文件不存贼");
 			return false;
-		} finally {
-			// 关闭SqlSession
-			sqlSession.close();		 
-		}
-		
-		return true;
+		}		
 	}
 	
 	// 对文件路径名+1处理，获得新的路径名

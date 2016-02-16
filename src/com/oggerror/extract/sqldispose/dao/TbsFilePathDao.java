@@ -1,4 +1,7 @@
 package com.oggerror.extract.sqldispose.dao;
+
+import java.util.ArrayList;
+
 /**
  * 
  * @author liurh
@@ -14,4 +17,11 @@ public interface TbsFilePathDao {
 	 * @return 表空间文件路径
 	 */
 	public String selectTbsFilePath(String tbsName);
+	
+	/**
+	 * 获取表空间文件路径列表
+	 * @param tbsName
+	 * @return 表空间文件路径列表
+	 */
+	public ArrayList<String> selectTbsFilePathList();
 }

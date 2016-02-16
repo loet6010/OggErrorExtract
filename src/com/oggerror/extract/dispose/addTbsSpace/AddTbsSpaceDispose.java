@@ -3,9 +3,7 @@ package com.oggerror.extract.dispose.addTbsSpace;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.oggerror.extract.connssh.param.GetAvailableDiskSpace;
 import com.oggerror.extract.sqldispose.logic.AddTbsSpaceLogic;
-import com.oggerror.extract.sqldispose.logic.TbsFilePathLogic;
 
 /**
  * 
@@ -26,20 +24,11 @@ public class AddTbsSpaceDispose {
 	public boolean addTbsSpace(String readLineTemp) {
 		// 获取表空间名
 		String tbsName = getTbsName(readLineTemp);
-		System.out.println(tbsName);
+		System.out.println(tbsName);		
 		
-		// 获取表空间文件名
-		TbsFilePathLogic tbsFilePathLogic = new TbsFilePathLogic();
-		String tbsFilePath = tbsFilePathLogic.getTbsFilePath(tbsName);
-		
-		// 文件名存在情况下，且磁盘可用空间够用，对表空间进行扩充
-		if (tbsFilePath != null) {
-			if (GetAvailableDiskSpace.isAvailable(tbsFilePath)) {
-				AddTbsSpaceLogic addTbsSpaceLogic = new AddTbsSpaceLogic();
-				return addTbsSpaceLogic.addTbsSpace(tbsName, tbsFilePath);
-			}
-		}
-		return false;
+		// 对表空间进行扩充
+		AddTbsSpaceLogic addTbsSpaceLogic = new AddTbsSpaceLogic();
+		return addTbsSpaceLogic.addTbsSpace(tbsName);
 	}
 	
 	private String getTbsName(String readLineTemp) {

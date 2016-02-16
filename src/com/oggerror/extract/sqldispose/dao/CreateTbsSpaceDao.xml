@@ -4,6 +4,6 @@
 
 <mapper namespace="com.oggerror.extract.sqldispose.dao.CreateTbsSpaceDao">  
     <insert id="createTbsSpace" parameterType="com.oggerror.extract.sqldispose.dto.TbsSpaceDto">
-    	create tablespace tbs_test datafile '/home/oracle/app/oracle/tbs_tde_test/tbsext01.dbf' size 20M autoextend on
+    	create tablespace ${tbsName} datafile ${tbsFilePath} size 20M autoextend on
     </insert>
 </mapper>

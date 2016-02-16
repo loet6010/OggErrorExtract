@@ -42,8 +42,10 @@ public class GetAvailableDiskSpace {
 	public static boolean isAvailable(String tbsFilePath) {
 		long availableSize = new GetAvailableDiskSpace().getDiskSize(tbsFilePath);
 		if (availableSize > TBS_ADDSIZE_20M) {
+			System.out.println("剩余空间大于20M，可以扩充！");
 			return true;
 		} else {
+			System.out.println("剩余空间不足20M，无法扩充！");
 			return false;
 		}
 	}

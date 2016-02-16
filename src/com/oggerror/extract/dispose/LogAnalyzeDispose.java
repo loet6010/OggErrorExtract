@@ -32,9 +32,9 @@ public class LogAnalyzeDispose {
 			boolean tbsAddDipose = atsDispose.addTbsSpace(readLineTemp);
 			
 			if (tbsAddDipose) {
-				System.out.println("表空间增加完成，表空间不足处理成功！");
+				System.out.println("表空间不足处理成功！");
 			} else {
-				System.out.println("表空间增加未果，表空间不足处理失败！");
+				System.out.println("表空间不足处理失败！");
 			}
 			
 		}

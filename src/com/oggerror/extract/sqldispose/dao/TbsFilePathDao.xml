@@ -7,4 +7,7 @@
         resultType="String">
         select MAX(file_name) from dba_data_files where tablespace_name = #{tbsName}
     </select>
+    <select id="selectTbsFilePathList" resultType="String">
+        select file_name from dba_data_files
+    </select>
 </mapper>
