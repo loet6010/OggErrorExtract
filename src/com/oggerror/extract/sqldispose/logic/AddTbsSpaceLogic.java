@@ -18,8 +18,6 @@ import com.oggerror.extract.sqldispose.util.SqlSessionBuild;
  */
 public class AddTbsSpaceLogic {
 
-	private String tbsFilePath = null;
-	private TbsSpaceDto addTbsSpaceDto;
 	private StringBuffer sBufferFileNo;
 	
 	/**
@@ -29,10 +27,10 @@ public class AddTbsSpaceLogic {
 	 */
 	public boolean addTbsSpace(String tbsName, String oldFilePath) {		
 		// 根据源文件路径名产生新的文件路径名
-		tbsFilePath = getNewFilePath(oldFilePath);
+		String tbsFilePath = getNewFilePath(oldFilePath);
 		
 		// 对AddTbsSpaceDto进行赋值
-		addTbsSpaceDto = new TbsSpaceDto();
+		TbsSpaceDto addTbsSpaceDto = new TbsSpaceDto();
 		addTbsSpaceDto.setTbsName(tbsName);
 		addTbsSpaceDto.setTbsFilePath(tbsFilePath);
 		
@@ -48,8 +46,7 @@ public class AddTbsSpaceLogic {
 		} catch(Exception e) {
 			e.printStackTrace();
 			return false;
-		}
-		finally {
+		} finally {
 			// 关闭SqlSession
 			sqlSession.close();		 
 		}
