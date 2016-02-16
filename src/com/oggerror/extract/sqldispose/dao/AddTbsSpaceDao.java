@@ -1,6 +1,6 @@
 package com.oggerror.extract.sqldispose.dao;
 
-import com.oggerror.extract.sqldispose.dto.AddTbsSpaceDto;
+import com.oggerror.extract.sqldispose.dto.TbsSpaceDto;
 
 /**
  * 
@@ -15,6 +15,6 @@ public interface AddTbsSpaceDao {
 	 * 根据表空间名和文件路劲，对表空间容量进行扩充
 	 * @param addTbsSpaceDto
 	 */
-	public void addTbsSpace(AddTbsSpaceDto addTbsSpaceDto);
+	public void addTbsSpace(TbsSpaceDto addTbsSpaceDto);
 
 }

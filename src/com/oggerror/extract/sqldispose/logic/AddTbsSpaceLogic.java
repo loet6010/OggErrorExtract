@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import org.apache.ibatis.session.SqlSession;
 
 import com.oggerror.extract.sqldispose.dao.AddTbsSpaceDao;
-import com.oggerror.extract.sqldispose.dto.AddTbsSpaceDto;
+import com.oggerror.extract.sqldispose.dto.TbsSpaceDto;
 import com.oggerror.extract.sqldispose.util.SqlSessionBuild;
 
 /**
@@ -19,7 +19,7 @@ import com.oggerror.extract.sqldispose.util.SqlSessionBuild;
 public class AddTbsSpaceLogic {
 
 	private String tbsFilePath = null;
-	private AddTbsSpaceDto addTbsSpaceDto;
+	private TbsSpaceDto addTbsSpaceDto;
 	private StringBuffer sBufferFileNo;
 	
 	/**
@@ -32,7 +32,7 @@ public class AddTbsSpaceLogic {
 		tbsFilePath = getNewFilePath(oldFilePath);
 		
 		// 对AddTbsSpaceDto进行赋值
-		addTbsSpaceDto = new AddTbsSpaceDto();
+		addTbsSpaceDto = new TbsSpaceDto();
 		addTbsSpaceDto.setTbsName(tbsName);
 		addTbsSpaceDto.setTbsFilePath(tbsFilePath);
 		

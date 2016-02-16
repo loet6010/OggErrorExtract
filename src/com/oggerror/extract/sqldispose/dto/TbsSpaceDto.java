@@ -6,7 +6,7 @@ package com.oggerror.extract.sqldispose.dto;
  * @intro  增加表空间的dto类
  *
  */
-public class AddTbsSpaceDto {
+public class TbsSpaceDto {
 	// 表空间名
 	private String tbsName;
 	// 表空间文件路径
