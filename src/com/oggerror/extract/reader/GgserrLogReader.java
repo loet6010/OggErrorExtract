@@ -57,12 +57,12 @@ public class GgserrLogReader {
 				// 对读取行进行判断
 				switch (matchType) {
 				case error_type:{
-					logAnalyzeDispose.errorNumberAcpuire(readLineTemp);;
+					logAnalyzeDispose.errorAnalyzeDispose(readLineTemp);
 				}
 					break;
 					
 				case warning_type:{
-					logAnalyzeDispose.errorNumberAcpuire(readLineTemp);;
+					logAnalyzeDispose.errorAnalyzeDispose(readLineTemp);
 				}
 					break;
 
