@@ -3,7 +3,7 @@
 
 
 <mapper namespace="com.oggerror.extract.sqldispose.dao.AddTbsSpaceDao">  
-    <insert id="addTbsSpace" parameterType="com.oggerror.extract.sqldispose.dto.AddTbsSpaceDto">
+    <insert id="addTbsSpace" parameterType="com.oggerror.extract.sqldispose.dto.TbsSpaceDto">
     	alter tablespace ${tbsName} add datafile ${tbsFilePath} size 20M
     </insert>
 </mapper>
