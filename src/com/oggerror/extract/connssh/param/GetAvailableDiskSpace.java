@@ -13,9 +13,11 @@ import com.oggerror.extract.connssh.conn.ConnectionManagerSsh;
  *
  */
 public class GetAvailableDiskSpace {
-	/**
-	 * SSH连接参数定义
-	 */
+	
+	// 扩充20M大小（单位KB）
+	private final static long TBS_ADDSIZE_20M = 1024 * 20;
+	
+	// SSH连接参数定义
 	private static final String IP_ADDRESS = "192.168.17.128";// IP地址	
 	private static final String PORT = "22";// 端口号
 	private static final String USER = "oracle";// 用户名
@@ -33,11 +35,21 @@ public class GetAvailableDiskSpace {
 	}
 	
 	/**
-	 * 获取可用磁盘空间
+	 * 判断剩余磁盘空间是否可扩充
 	 * @param tbsFilePath
-	 * @return long
+	 * @return true
 	 */
-	public long getDiskSize(String tbsFilePath) {
+	public static boolean isAvailable(String tbsFilePath) {
+		long availableSize = new GetAvailableDiskSpace().getDiskSize(tbsFilePath);
+		if (availableSize > TBS_ADDSIZE_20M) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// 获取磁盘剩余空间大小
+	private long getDiskSize(String tbsFilePath) {
 		String matchLine = null;
 		command_line = COMMAND_LINE_FIRST + tbsFilePath;
 		if (getedCommandLineResult()) {

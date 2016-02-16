@@ -54,6 +54,7 @@ public class AddTbsSpaceLogic {
 		return true;
 	}
 	
+	// 对文件路径名+1处理，获得新的路径名
 	private String getNewFilePath(String filePath) {
 		if (filePath == null) {
 			return null;
