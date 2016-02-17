@@ -26,9 +26,14 @@ public class AddTbsSpaceDispose {
 		String tbsName = getTbsName(readLineTemp);
 		System.out.println(tbsName);		
 		
-		// 对表空间进行扩充
-		AddTbsSpaceLogic addTbsSpaceLogic = new AddTbsSpaceLogic();
-		return addTbsSpaceLogic.addTbsSpace(tbsName);
+		if (tbsName != null) {
+			// 对表空间进行扩充
+			AddTbsSpaceLogic addTbsSpaceLogic = new AddTbsSpaceLogic();
+			return addTbsSpaceLogic.addTbsSpace(tbsName);
+		} else {
+			System.out.println("增加表空间，未截取到表空间名！");
+			return false;
+		}
 	}
 	
 	private String getTbsName(String readLineTemp) {

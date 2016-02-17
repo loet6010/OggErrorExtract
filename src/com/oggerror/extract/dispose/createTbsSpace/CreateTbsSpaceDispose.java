@@ -19,7 +19,7 @@ public class CreateTbsSpaceDispose {
 	private final static String MATCH_QUOTATION = "[']";
 	
 	/**
-	 * 创建表空间，成功返回true
+	 * 新建表空间，成功返回true
 	 * 
 	 * @param readLineTemp
 	 * @return true
@@ -34,6 +34,7 @@ public class CreateTbsSpaceDispose {
 			CreateTbsSpaceLogic createTbsSpaceLogic = new CreateTbsSpaceLogic();
 			return createTbsSpaceLogic.createTbsSpace(tbsName);
 		} else {
+			System.out.println("新建表空间，未截取到表空间名！");
 			return false;
 		}
 		

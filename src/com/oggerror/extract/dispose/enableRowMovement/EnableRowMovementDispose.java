@@ -35,6 +35,7 @@ public class EnableRowMovementDispose {
 			EnableRowMovementLogic enableRowMovementLogic = new EnableRowMovementLogic();
 			return enableRowMovementLogic.enableRowMovement(tableName);
 		} else {
+			System.out.println("开启行迁移，未截取到表名！");
 			return false;
 		}
 	}

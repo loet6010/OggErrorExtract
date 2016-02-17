@@ -64,7 +64,7 @@ public class AddTbsSpaceLogic {
 				return false;
 			}				
 		} else {
-			System.out.println("表空间文件不存贼");
+			System.out.println("表空间文件不存在");
 			return false;
 		}		
 	}
