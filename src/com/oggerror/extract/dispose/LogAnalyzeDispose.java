@@ -11,7 +11,7 @@ import com.oggerror.extract.dispose.enableRowMovement.EnableRowMovementDispose;
  * 
  * @author liurh
  * @date 2016年2月4日
- * @intro 对ggserr.log中ERROR信息进行处理
+ * @intro 对ggserr.log中ERROR信息进行处理，并调用各错误的处理类
  *
  */
 public class LogAnalyzeDispose {

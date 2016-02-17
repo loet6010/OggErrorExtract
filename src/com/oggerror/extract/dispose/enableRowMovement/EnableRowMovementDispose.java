@@ -9,7 +9,7 @@ import com.oggerror.extract.sqldispose.logic.EnableRowMovementLogic;
  * 
  * @author liurh
  * @date 2016年2月17日
- * @intro 开启行迁移处理类，提取表名，调用开启行迁移类
+ * @intro 开启行迁移处理类，提取表名，调用开启行迁移逻辑类
  *
  */
 public class EnableRowMovementDispose {

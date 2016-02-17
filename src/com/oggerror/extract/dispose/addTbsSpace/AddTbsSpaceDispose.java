@@ -9,7 +9,7 @@ import com.oggerror.extract.sqldispose.logic.AddTbsSpaceLogic;
  * 
  * @author liurh
  * @date   2016年2月15日
- * @intro  增加表空间处理类，提取出表空间名，并调用表空间增加类
+ * @intro  增加表空间处理类，提取出表空间名，并调用增加表空间逻辑类
  *
  */
 public class AddTbsSpaceDispose {
