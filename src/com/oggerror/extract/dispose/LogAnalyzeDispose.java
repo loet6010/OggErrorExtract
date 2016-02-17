@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import com.oggerror.extract.dispose.addTbsSpace.AddTbsSpaceDispose;
 import com.oggerror.extract.dispose.createTbsSpace.CreateTbsSpaceDispose;
+import com.oggerror.extract.dispose.enableRowMovement.EnableRowMovementDispose;
 
 /**
  * 
@@ -21,11 +22,14 @@ public class LogAnalyzeDispose {
 	private final static String MATCH_ORA_01654 = "(ORA-01654)";
 	// 匹配字符串(表空间不存在）
 	private final static String MATCH_ORA_00959 = "(ORA-00959)";
+	// 匹配字符串(分区表未打开行迁移）
+	private final static String MATCH_ORA_14402 = "(ORA-14402)";
 
 	// 匹配枚举类型
 	private enum ErrorType {
 		tbs_overflow,
-		tbs_noexist, 
+		tbs_noexist,
+		row_movement_unable,
 		other_type
 	}
 
@@ -62,6 +66,18 @@ public class LogAnalyzeDispose {
 			}
 		}
 			break;
+			
+		case row_movement_unable: {// 分区表未打开行迁移处理
+			EnableRowMovementDispose enableRowMovementDispose = new EnableRowMovementDispose();
+			boolean rowMovementDispose = enableRowMovementDispose.enableRowMovement(readLineTemp);
+
+			if (rowMovementDispose) {
+				System.out.println("开启行迁移处理成功！");
+			} else {
+				System.out.println("开启行迁移处理失败！");
+			}
+		}
+			break;
 
 		default:
 			break;
@@ -80,6 +96,12 @@ public class LogAnalyzeDispose {
 		matcher = pattern.matcher(readLineTemp);
 		if (matcher.find())
 			return ErrorType.tbs_noexist;
+		
+		// 分区表未打开行迁移
+		pattern = Pattern.compile(MATCH_ORA_14402);
+		matcher = pattern.matcher(readLineTemp);
+		if (matcher.find())
+			return ErrorType.row_movement_unable;
 
 		return ErrorType.other_type;
 	}
