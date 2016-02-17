@@ -1,2 +1,3 @@
 # OggErrorExtract
 读取ggserr.log并分离出错误信息，并对提取出的错误进行处理
+程序入口，reader包下的GgserrLogReader类，需传递文件路径名
