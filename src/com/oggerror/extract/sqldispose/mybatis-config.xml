@@ -19,5 +19,6 @@
 		<mapper resource="com/oggerror/extract/sqldispose/dao/TbsFilePathDao.xml" />
 		<mapper resource="com/oggerror/extract/sqldispose/dao/AddTbsSpaceDao.xml" />
 		<mapper resource="com/oggerror/extract/sqldispose/dao/CreateTbsSpaceDao.xml" />
+		<mapper resource="com/oggerror/extract/sqldispose/dao/EnableRowMovementDao.xml" />
 	</mappers>
 </configuration>
