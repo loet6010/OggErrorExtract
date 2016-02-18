@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.oggerror.extract.dispose.addTbsSpace.AddTbsSpaceDispose;
+import com.oggerror.extract.dispose.compressTableError.CompressTableErrorDispose;
 import com.oggerror.extract.dispose.createTbsSpace.CreateTbsSpaceDispose;
 import com.oggerror.extract.dispose.enableRowMovement.EnableRowMovementDispose;
 
@@ -24,12 +25,15 @@ public class LogAnalyzeDispose {
 	private final static String MATCH_ORA_00959 = "(ORA-00959)";
 	// 匹配字符串(分区表未打开行迁移）
 	private final static String MATCH_ORA_14402 = "(ORA-14402)";
+	// 匹配字符串(分区表未打开行迁移）
+	private final static String MATCH_OGG_01433 = "(OGG-01433)";
 
 	// 匹配枚举类型
 	private enum ErrorType {
 		tbs_overflow,
 		tbs_noexist,
 		row_movement_unable,
+		compress_table_error,
 		other_type
 	}
 
@@ -78,6 +82,18 @@ public class LogAnalyzeDispose {
 			}
 		}
 			break;
+			
+		case compress_table_error: {// 压缩表错误
+			CompressTableErrorDispose compressTableErrorDispose = new CompressTableErrorDispose();
+			boolean cteDispose = compressTableErrorDispose.compressTableError(readLineTemp);
+			
+			if (cteDispose) {
+				System.out.println("压缩表错误处理成功！");
+			} else {
+				System.out.println("压缩表错误处理失败！");
+			}
+		}
+			break;
 
 		default:
 			break;
@@ -102,6 +118,12 @@ public class LogAnalyzeDispose {
 		matcher = pattern.matcher(readLineTemp);
 		if (matcher.find())
 			return ErrorType.row_movement_unable;
+		
+		// 压缩表错误
+		pattern = Pattern.compile(MATCH_OGG_01433);
+		matcher = pattern.matcher(readLineTemp);
+		if (matcher.find())
+			return ErrorType.compress_table_error;
 
 		return ErrorType.other_type;
 	}

@@ -3,6 +3,7 @@ package com.oggerror.extract.dispose.enableRowMovement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.oggerror.extract.dispose.util.TableNameExtractTool;
 import com.oggerror.extract.sqldispose.logic.EnableRowMovementLogic;
 
 /**
@@ -12,11 +13,9 @@ import com.oggerror.extract.sqldispose.logic.EnableRowMovementLogic;
  * @intro 开启行迁移处理类，提取表名，调用开启行迁移逻辑类
  *
  */
-public class EnableRowMovementDispose {
+public class EnableRowMovementDispose extends TableNameExtractTool {
 	// 正则匹配表名匹配规则
-	private final static String MATCH_TBS_NAME = "(UPDATE)[ ]+[']?[^ ]+[']?";
-
-	private final static String MATCH_QUOTATION = "[\"]";
+	private final static String MATCH_TBS_NAME = "(UPDATE)[ ]+[^ ]+";
 
 	/**
 	 * 开启行迁移处理方法
@@ -25,8 +24,7 @@ public class EnableRowMovementDispose {
 	 * @return true
 	 */
 	public boolean enableRowMovement(String readLineTemp) {
-		System.out.println(readLineTemp);
-		
+		// 获取表名
 		String tableName = getTbsName(readLineTemp);		
 		System.out.println(tableName);
 		
@@ -35,36 +33,20 @@ public class EnableRowMovementDispose {
 			EnableRowMovementLogic enableRowMovementLogic = new EnableRowMovementLogic();
 			return enableRowMovementLogic.enableRowMovement(tableName);
 		} else {
-			System.out.println("开启行迁移，未截取到表名！");
+			System.out.println("开启行迁移，未获取到表名！");
 			return false;
 		}
 	}
 
-	// 获取表空间名
+	// 获取表名
 	private String getTbsName(String readLineTemp) {
-		Pattern pattern = null;
-		Matcher matcher = null;
-		String tableName = null;
-
-		// 取得表名
-		pattern = Pattern.compile(MATCH_TBS_NAME);
-		matcher = pattern.matcher(readLineTemp);
-		if (matcher.find()) {
-			String mString = matcher.group(0);
-			System.out.println(mString);
-			String[] mStringArr = mString.split(" ");
-			tableName = mStringArr[mStringArr.length - 1];
-		}
+		Pattern pattern = Pattern.compile(MATCH_TBS_NAME);
+		Matcher matcher = pattern.matcher(readLineTemp);
 		
-		System.out.println(tableName);
-		
-		// 如果有引号，将引号去除
-		pattern = Pattern.compile(MATCH_QUOTATION);
-		matcher = pattern.matcher(tableName);
 		if (matcher.find()) {
-			tableName = matcher.replaceAll("");
+			return getTableOrSpaceName(matcher.group(0));
 		}
 
-		return tableName;
+		return null;
 	}
 }
