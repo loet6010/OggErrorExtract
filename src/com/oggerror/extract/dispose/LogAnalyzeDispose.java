@@ -25,7 +25,7 @@ public class LogAnalyzeDispose {
 	private final static String MATCH_ORA_00959 = "(ORA-00959)";
 	// 匹配字符串(分区表未打开行迁移）
 	private final static String MATCH_ORA_14402 = "(ORA-14402)";
-	// 匹配字符串(分区表未打开行迁移）
+	// 匹配字符串(压缩表错误）
 	private final static String MATCH_OGG_01433 = "(OGG-01433)";
 
 	// 匹配枚举类型
