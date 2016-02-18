@@ -16,7 +16,18 @@ public class TestMain {
 		// 调用处理方法
 		GgserrLogReader ggserrReader = new GgserrLogReader();
 		ggserrReader.readGgserrLog(filePath);
-
+		
+		String osName = System.getProperty("os.name").toLowerCase();
+		System.out.println(osName);
+		
+		int sysNo = osName.indexOf("win");
+		System.out.println(sysNo);
+		if (sysNo >= 0) {
+			System.out.println("Windows");
+		} else {
+			System.out.println("Linux");
+		}
+		
 	}
 
 }
