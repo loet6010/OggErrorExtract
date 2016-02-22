@@ -15,7 +15,7 @@ import com.oggerror.extract.sqldispose.logic.EnableRowMovementLogic;
  */
 public class EnableRowMovementDispose extends TableNameExtractTool {
 	// 正则匹配表名匹配规则
-	private final static String MATCH_TBS_NAME = "(UPDATE)[ ]+[^ ]+";
+	private final static String MATCH_TBS_NAME = "(UPDATE)(.)+[^ ]+[.][^ ]+";
 
 	/**
 	 * 开启行迁移处理方法
