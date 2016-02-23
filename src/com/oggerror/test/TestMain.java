@@ -17,6 +17,8 @@ public class TestMain {
 		GgserrLogReader ggserrReader = new GgserrLogReader();
 		ggserrReader.readGgserrLog(filePath);
 		
+		
+		// 获取系统名
 		String osName = System.getProperty("os.name").toLowerCase();
 		System.out.println(osName);
 		
